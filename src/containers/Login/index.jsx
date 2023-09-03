@@ -4,6 +4,8 @@ import { useState } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { useLinkedIn } from 'react-linkedin-login-oauth2'
 import { useGoogleLogin } from '@react-oauth/google'
+import { toast } from 'react-toastify'
+import apiPipoca from '../../services/api'
 
 import {
   Container,
@@ -29,7 +31,26 @@ import Google from '../../assets/google.svg'
 function Login() {
   const navigate = useNavigate()
   const [isButtonEnabled] = useState(true)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [faceUser, setFaceUser] = useState()
+
+  async function loginUser(email, password) {
+    try {
+      const response = await apiPipoca.post('/api/login', {
+        email,
+        password,
+      })
+
+      if (response.status === 200) {
+        toast.success('Login bem-sucedido!')
+      } else {
+        toast.error('Falha ao fazer login. Verifique suas credenciais.')
+      }
+    } catch (error) {
+      toast.error('Ocorreu um erro ao fazer login. Tente novamente mais tarde.')
+    }
+  }
 
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => console.log(tokenResponse),
@@ -86,8 +107,18 @@ function Login() {
         <Divider />
 
         <InputContainer>
-          <Input type="email" label="E-mail" />
-          <Input type="password" label="Senha" />
+          <Input
+            type="email"
+            label="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            type="password"
+            label="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <LinkAlign>
             <ForgetPassword>Esqueceu a senha?</ForgetPassword>
           </LinkAlign>
@@ -95,7 +126,9 @@ function Login() {
             label="Login"
             isTrue={true}
             isButtonEnabled={isButtonEnabled}
+            onClick={() => loginUser(email, password)}
           />
+
           <Cadastre>
             <p>
               Não possui cadastro ?{' '}
