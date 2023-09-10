@@ -61,8 +61,8 @@ function Login() {
           email: values.email,
           senha: values.senha,
         })
-        console.log(response)
-        if (response.status === 201) {
+        
+        if (response.status === 201 || response.status === 200) {
           toast.success('Login bem-sucedido!')
         } else {
           toast.error('Falha ao fazer login. Verifique suas credenciais.')
