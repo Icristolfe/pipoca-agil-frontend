@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Container, Popcorn } from './style';
-import CentralContainer from '../../components/CentralContainer';
-import Corn from '../../assets/corn.png';
+import { useState, useEffect } from 'react'
+import { Container, Popcorn } from './style'
+import CentralContainer from '../../components/CentralContainer'
+import Corn from '../../assets/corn.png'
 
 function Splash() {
-  const [containerWidth, setContainerWidth] = useState(window.innerWidth);
-  const [popcorns, setPopcorns] = useState([]);
-  const [startTime] = useState(Date.now());
-  const [showLogin, setShowLogin] = useState(false);
-  const [timeLimitReached, setTimeLimitReached] = useState(false);
+  const [containerWidth, setContainerWidth] = useState(window.innerWidth)
+  const [popcorns, setPopcorns] = useState([])
+  const [startTime] = useState(Date.now())
+  const [showLogin, setShowLogin] = useState(false)
+  const [timeLimitReached, setTimeLimitReached] = useState(false)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const addPopcorn = () => {
@@ -18,68 +18,65 @@ function Splash() {
         left: Math.random() * (containerWidth - 50),
         rotation: Math.random() * 360,
         id: Date.now(),
-      };
-      setPopcorns((prevPopcorns) => [...prevPopcorns, newPopcorn]);
+      }
+      setPopcorns((prevPopcorns) => [...prevPopcorns, newPopcorn])
     }
-  };
+  }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateInterval = () => {
-    const elapsedTime = Date.now() - startTime;
-    return Math.max(500 / Math.pow(2, Math.floor(elapsedTime / 250)), 5);
-  };
+    const elapsedTime = Date.now() - startTime
+    return Math.max(500 / Math.pow(2, Math.floor(elapsedTime / 250)), 5)
+  }
 
   useEffect(() => {
     const popcornInterval = setInterval(() => {
-      addPopcorn();
-    }, calculateInterval());
+      addPopcorn()
+    }, calculateInterval())
 
     return () => {
-      clearInterval(popcornInterval);
-    };
-  }, [addPopcorn, calculateInterval, popcorns, timeLimitReached]);
+      clearInterval(popcornInterval)
+    }
+  }, [addPopcorn, calculateInterval, popcorns, timeLimitReached])
 
   useEffect(() => {
     const handleResize = () => {
-      setContainerWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
+      setContainerWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   useEffect(() => {
     if (!showLogin) {
       setTimeout(() => {
-        setTimeLimitReached(true);
-        setShowLogin(true);
-      }, 10000);
+        setTimeLimitReached(true)
+        setShowLogin(true)
+      }, 10000)
     }
-  }, [showLogin]);
+  }, [showLogin])
 
- 
-return (
-  <Container>
-    {popcorns.map((popcorn) => (
-      <Popcorn
-        key={popcorn.id}
-        src={Corn}
-        alt='popcorn'
-        style={{
-          position: 'absolute',
-          top: `${popcorn.top}px`,
-          left: `${popcorn.left}px`,
-          transform: `rotate(${popcorn.rotation}deg)`,
-        }}
-      />
-    ))}
+  return (
+    <Container>
+      {popcorns.map((popcorn) => (
+        <Popcorn
+          key={popcorn.id}
+          src={Corn}
+          alt="popcorn"
+          style={{
+            position: 'absolute',
+            top: `${popcorn.top}px`,
+            left: `${popcorn.left}px`,
+            transform: `rotate(${popcorn.rotation}deg)`,
+          }}
+        />
+      ))}
 
-    {showLogin && (
-      <CentralContainer showQuestion={timeLimitReached} />
-    )}
-  </Container>
-);
+      {showLogin && <CentralContainer showQuestion={timeLimitReached} />}
+    </Container>
+  )
 }
 
-export default Splash;
+export default Splash

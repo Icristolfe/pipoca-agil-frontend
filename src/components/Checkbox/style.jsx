@@ -22,6 +22,7 @@ export const StyledCheckbox = styled.div`
   transition: all 150ms;
   border: solid 2px #000;
   margin-right: 10px;
+  margin-left: 21px;
 
   ${HiddenCheckbox}:checked + & {
     background: #000;

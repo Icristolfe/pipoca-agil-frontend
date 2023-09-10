@@ -4,9 +4,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import apiPipoca from '../../services/api'
 
-
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import {
   Container,
   PipocaLogo,
@@ -24,7 +22,7 @@ import { Input, Button, Checkbox } from '../../components'
 import House from '../../assets/house.svg'
 import Logo from '../../assets/logologin.svg'
 
-function Login() {
+function Cadastro() {
   const navigate = useNavigate()
 
   const [isCheckedAtt, setIsCheckedAtt] = useState(false)
@@ -44,6 +42,7 @@ function Login() {
     initialValues: {
       nome: '',
       sobrenome: '',
+      datanascimento: '',
       email: '',
       senha: '',
       confirmarSenha: '',
@@ -53,27 +52,65 @@ function Login() {
     validationSchema: Yup.object({
       nome: Yup.string().required('Campo Nome é obrigatório'),
       sobrenome: Yup.string().required('Campo Sobrenome é obrigatório'),
+      datanascimento: Yup.date()
+        .nullable()
+        .required('Campo Data de Nascimento é obrigatório')
+        .test(
+          'is-of-age',
+          'Você deve ter entre 18 e 120 anos',
+          function (value) {
+            const today = new Date()
+            const minDate = new Date()
+            minDate.setFullYear(today.getFullYear() - 120) // 120 anos atrás
+            const maxDate = new Date()
+            maxDate.setFullYear(today.getFullYear() - 18) // 18 anos atrás
+
+            return value >= minDate && value <= maxDate
+          },
+        ),
       email: Yup.string()
         .email('Email inválido')
         .required('Campo Email é obrigatório'),
       senha: Yup.string()
         .min(8, 'A senha deve ter no mínimo 8 caracteres')
+        .matches(
+          /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])/,
+          'A senha deve conter um número, uma letra maiúscula e caractere especial',
+        )
         .required('Campo Senha é obrigatório'),
       confirmarSenha: Yup.string()
         .oneOf([Yup.ref('senha'), null], 'As senhas devem ser iguais')
         .required('Campo Confirmar Senha é obrigatório'),
     }),
     onSubmit: (values) => {
-      console.log(values)
-      values.isCheckedAtt = isCheckedAtt
-      values.isCheckedPriv = isCheckedPriv
-      console.log(formik)
+      if (
+        !values.nome ||
+        !values.sobrenome ||
+        !values.datanascimento ||
+        !values.email ||
+        !values.senha ||
+        !values.confirmarSenha
+      ) {
+        // Exiba uma mensagem de erro informando que todos os campos devem ser preenchidos.
+        toast.error('Por favor, preencha todos os campos.', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+        return // Impede a execução do POST se algum campo estiver vazio.
+      }
+
+      // Se todos os campos estiverem preenchidos, continue com a chamada da API.
       apiPipoca
         .post('/users', values)
         .then(() => {
           toast.success('Cadastro realizado com sucesso!', {
             position: 'top-right',
-            autoClose: 3000, // Tempo em milissegundos
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -124,6 +161,35 @@ function Login() {
               <Input type="text" {...formik.getFieldProps('sobrenome')} />
             </AlignInputs>
           </div>
+
+          <Label>Data de Nascimento</Label>
+          {formik.touched.datanascimento && formik.errors.datanascimento ? (
+            <span className="formikmessage">
+              {formik.errors.datanascimento}
+            </span>
+          ) : null}
+          <Input
+            type="date"
+            widthChange={true}
+            onBlur={(e) => {
+              const selectedDate = e.target.value
+              const dateObj = new Date(selectedDate)
+              const formattedDate = `${dateObj.getFullYear()}-${String(
+                dateObj.getMonth() + 1,
+              ).padStart(2, '0')}-${String(dateObj.getDate()).padStart(
+                2,
+                '0',
+              )}T${String(dateObj.getHours()).padStart(2, '0')}:${String(
+                dateObj.getMinutes(),
+              ).padStart(2, '0')}:${String(dateObj.getSeconds()).padStart(
+                2,
+                '0',
+              )}.${String(dateObj.getMilliseconds()).padStart(3, '0')}Z`
+              formik.setFieldValue('datanascimento', formattedDate)
+            }}
+            {...formik.getFieldProps('datanascimento')}
+          />
+
           <Label>Email</Label>
           {formik.touched.email && formik.errors.email ? (
             <span className="formikmessage">{formik.errors.email}</span>
@@ -191,4 +257,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Cadastro

@@ -33,49 +33,43 @@ export const ContainerItems = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 10px;
-    margin: 0 0 30px 0;
+    margin-bottom: 30px;
 
     h1 {
       font-size: 24px;
       font-weight: 700;
     }
   }
-`
 
-export const SocialContainer = styled.div`
-  display: none;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 25px;
-`
-
-export const Social = styled.img`
-  width: ${(props) => (props.true ? '37px' : '30px')};
-  height: ${(props) => (props.true ? '37px' : '30px')};
-`
-
-export const LinkButton = styled.button`
-  cursor: pointer;
-  border: none;
-  background: none;
-
-  &&:hover {
-    opacity: 0.8;
-  }
-
-  &&:active {
-    opacity: 0.6;
+  .formikmessage {
+    font-size: 10px;
+    color: #b22222;
+    margin: 0px 0 5px 20px;
   }
 `
 
 export const InputContainer = styled.div`
   width: 100%;
   height: 100%;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+  padding: 0 55px;
+  text-align: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .nameinputs {
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 12px;
+  }
 `
 
 export const ForgetPassword = styled.a`
@@ -86,26 +80,25 @@ export const ForgetPassword = styled.a`
 export const LinkAlign = styled.div`
   display: flex;
   justify-content: end;
-  padding-right: 30px;
-  margin-bottom: 30px;
+  padding-right: 48px;
+  margin: 50px;
 `
 
-export const Cadastre = styled.div`
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
+export const Label = styled.label`
   font-size: 14px;
-  a {
-    color: #117df9;
-    font-weight: 900;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+`
 
-  a:hover {
-    opacity: 0.8;
-  }
+export const AlignInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 
-  a:active {
-    opacity: 0.5;
+  label {
+    margin-left: 20px;
   }
 `

@@ -4,10 +4,10 @@ import {
   Text,
   QuestionContainer,
   ButtonContainer,
-} from './style';
+} from './style'
 
-import { useNavigate } from 'react-router-dom';
-import Button from '../Button';
+import { useNavigate } from 'react-router-dom'
+import Button from '../Button'
 
 // eslint-disable-next-line react/prop-types
 const CentralContainer = ({ showQuestion }) => {
@@ -20,13 +20,21 @@ const CentralContainer = ({ showQuestion }) => {
       {showQuestion && (
         <QuestionContainer>
           <ButtonContainer>
-            <Button label="Login" onClick={() => navigate('/login')} />
-            <Button label="Cadastro" onClick={() => navigate('/cadastro')} />
+            <Button
+              label="Login"
+              onClick={() => navigate('/login')}
+              isButtonEnabled={true}
+            />
+            <Button
+              label="Cadastro"
+              onClick={() => navigate('/cadastro')}
+              isButtonEnabled={true}
+            />
           </ButtonContainer>
         </QuestionContainer>
       )}
     </StyledCentralContainer>
-  );
-};
+  )
+}
 
-export default CentralContainer;
+export default CentralContainer

@@ -15,6 +15,12 @@ export const StyledInput = styled.input`
   border: none;
   border-radius: 5px;
   width: ${(props) => (props.widthChange ? '90%' : '85%')};
+
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(38%) sepia(13%) saturate(0%) hue-rotate(247deg)
+      brightness(94%) contrast(90%);
+  }
 `
 
 export const Label = styled.label`

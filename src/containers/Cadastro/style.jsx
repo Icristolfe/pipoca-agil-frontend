@@ -52,6 +52,9 @@ export const InputContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 0 55px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 
   .nameinputs {
     display: flex;

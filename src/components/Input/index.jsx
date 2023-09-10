@@ -24,7 +24,7 @@ const Input = ({ type, widthChange, ...props }) => {
             widthChange={widthChange}
             onClick={togglePasswordVisibility}
           >
-            <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            <FontAwesomeIcon color='#636060' icon={showPassword ? faEyeSlash : faEye} />
           </PasswordIcon>
         )}
       </InputAlign>
