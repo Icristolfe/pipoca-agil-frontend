@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  padding: 20px; /* Corrigindo o valor de padding */
+  padding:0px 20px; /* Corrigindo o valor de padding */
   background-color: #b13830;
 `;
 
@@ -23,7 +23,7 @@ export const CentralContainer = styled.div`
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
   border-radius: 10px;
-  padding: 20px; /* Adicionando padding para o conteúdo */
+  padding: 0px 20px; /* Adicionando padding para o conteúdo */
   text-align: center;
   position: absolute;
   top: 50%;

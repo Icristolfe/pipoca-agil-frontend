@@ -192,7 +192,7 @@ function Login() {
               ) : null}
             </span>
             <Input
-              type="senha"
+              type="password"
               label="Senha"
               id="senha"
               name="senha"

@@ -14,8 +14,8 @@ function Splash() {
   const addPopcorn = () => {
     if (!timeLimitReached) {
       const newPopcorn = {
-        top: Math.random() * (window.innerHeight - 100),
-        left: Math.random() * (containerWidth - 50),
+        top: Math.random() * (window.innerHeight - 25),
+        left: Math.random() * (containerWidth - 25),
         rotation: Math.random() * 360,
         id: Date.now(),
       }
