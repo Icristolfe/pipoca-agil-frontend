@@ -1,6 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Login, Splash, Cadastro, RecoveryPass } from '../containers';
+import { Login, Splash, Cadastro, RecoveryPass, Home } from '../containers';
 
 function RoutesApp() {
   return (
@@ -11,6 +11,7 @@ function RoutesApp() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recuperarsenha" element={<RecoveryPass />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

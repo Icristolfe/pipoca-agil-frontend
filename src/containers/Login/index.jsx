@@ -57,12 +57,14 @@ function Login() {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await apiPipoca.post('/login', {
+        const data = await apiPipoca.post('/login', {
           email: values.email,
           senha: values.senha,
         })
-        
-        if (response.status === 201 || response.status === 200) {
+        const token = data.data.access_token
+
+        localStorage.setItem('token', token)
+        if (data.status === 201 || data.status === 200) {
           toast.success('Login bem-sucedido!')
         } else {
           toast.error('Falha ao fazer login. Verifique suas credenciais.')
