@@ -44,20 +44,20 @@ function Login() {
     email: Yup.string()
       .email('Email inválido')
       .required('Campo Email é obrigatório'),
-    password: Yup.string().required('Campo Senha é obrigatório'),
+    senha: Yup.string().required('Campo Senha é obrigatório'),
   })
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
+      senha: '',
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
         const response = await apiPipoca.post('/login', {
           email: values.email,
-          senha: values.password,
+          senha: values.senha,
         })
 
         if (response.status === 200) {
@@ -187,16 +187,16 @@ function Login() {
 
             <Label>Senha</Label>
             <span className="formikmessage">
-              {formik.touched.password && formik.errors.password ? (
-                <div className="formikmessage">{formik.errors.password}</div>
+              {formik.touched.senha && formik.errors.senha ? (
+                <div className="formikmessage">{formik.errors.senha}</div>
               ) : null}
             </span>
             <Input
-              type="password"
+              type="senha"
               label="Senha"
-              id="password"
-              name="password"
-              value={formik.values.password}
+              id="senha"
+              name="senha"
+              value={formik.values.senha}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />

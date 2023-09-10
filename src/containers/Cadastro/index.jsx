@@ -117,6 +117,7 @@ function Cadastro() {
             draggable: true,
             progress: undefined,
           })
+          navigate('/login')
         })
         .catch(() => {
           toast.error('Erro ao cadastrar. Por favor, tente novamente.', {

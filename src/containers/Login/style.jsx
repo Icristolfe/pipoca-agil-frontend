@@ -123,5 +123,5 @@ export const Label = styled.label`
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  margin:20px 0 5px 41px;
+  margin:20px 0 5px 45px;
 `
