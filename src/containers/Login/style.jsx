@@ -75,7 +75,13 @@ export const InputContainer = styled.div`
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 10px;
+
+  .formikmessage {
+    font-size: 10px;
+    color: #b22222;
+    margin: 0px 0 5px 40px;
+  }
 `
 
 export const ForgetPassword = styled.a`
@@ -108,4 +114,13 @@ export const Cadastre = styled.div`
   a:active {
     opacity: 0.5;
   }
+`
+
+export const Label = styled.label`
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 5px;
+  margin-left: 41px;
 `

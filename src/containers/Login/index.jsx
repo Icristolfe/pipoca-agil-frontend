@@ -13,6 +13,7 @@ import {
   Container,
   PipocaLogo,
   ContainerItems,
+  Label,
   // Social,
   // LinkButton,
   // SocialContainer,
@@ -56,7 +57,7 @@ function Login() {
       try {
         const response = await apiPipoca.post('/login', {
           email: values.email,
-          password: values.password,
+          senha: values.password,
         })
 
         if (response.status === 200) {
@@ -168,6 +169,12 @@ function Login() {
 
         <InputContainer>
           <form onSubmit={formik.handleSubmit}>
+            <Label>Email</Label>
+            <span className="formikmessage">
+              {formik.touched.email && formik.errors.email ? (
+                <div className="formikmessage">{formik.errors.email}</div>
+              ) : null}
+            </span>
             <Input
               type="email"
               label="E-mail"
@@ -177,10 +184,13 @@ function Login() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="formikmessage">{formik.errors.email}</div>
-            ) : null}
 
+            <Label>Senha</Label>
+            <span className="formikmessage">
+              {formik.touched.password && formik.errors.password ? (
+                <div className="formikmessage">{formik.errors.password}</div>
+              ) : null}
+            </span>
             <Input
               type="password"
               label="Senha"
@@ -190,9 +200,6 @@ function Login() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.password && formik.errors.password ? (
-              <div className="formikmessage">{formik.errors.password}</div>
-            ) : null}
 
             <LinkAlign>
               <ForgetPassword onClick={() => navigate('/recuperarsenha')}>
