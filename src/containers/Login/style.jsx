@@ -73,14 +73,17 @@ export const InputContainer = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 
   .formikmessage {
     font-size: 10px;
     color: #b22222;
-    margin: 0px 0 5px 40px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
   }
 `
 
@@ -120,7 +123,5 @@ export const Label = styled.label`
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 5px;
-  margin-left: 41px;
+  margin:20px 0 5px 41px;
 `
