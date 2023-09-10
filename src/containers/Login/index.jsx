@@ -44,7 +44,9 @@ function Login() {
     email: Yup.string()
       .email('Email inválido')
       .required('Campo Email é obrigatório'),
-    senha: Yup.string().required('Campo Senha é obrigatório'),
+    senha: Yup.string()
+      .required('Campo Senha é obrigatório')
+      .min(8, 'A senha deve ter no mínimo 8 caracteres'),
   })
 
   const formik = useFormik({
@@ -59,8 +61,8 @@ function Login() {
           email: values.email,
           senha: values.senha,
         })
-
-        if (response.status === 200) {
+        console.log(response)
+        if (response.status === 201) {
           toast.success('Login bem-sucedido!')
         } else {
           toast.error('Falha ao fazer login. Verifique suas credenciais.')
