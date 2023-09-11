@@ -7,7 +7,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 10px;
+  overflow: hidden;
 `
 
 export const PipocaLogo = styled.img`
@@ -21,6 +23,7 @@ export const ContainerItems = styled.div`
   width: 497px;
   height: 800px;
   border-radius: 5px;
+  overflow: hidden;
 
   .align-house {
     display: flex;
@@ -34,6 +37,7 @@ export const ContainerItems = styled.div`
     flex-direction: column;
     gap: 10px;
     margin-bottom: 30px;
+    margin-top: 40px;
 
     h1 {
       font-size: 24px;

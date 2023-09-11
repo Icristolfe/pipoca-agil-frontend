@@ -7,7 +7,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 10px;
+  overflow: hidden;
 `
 
 export const PipocaLogo = styled.img`
@@ -19,8 +21,9 @@ export const PipocaLogo = styled.img`
 export const ContainerItems = styled.div`
   background-color: #fccc5c;
   width: 497px;
-  height: 800px;
+  height: 90%;
   border-radius: 5px;
+  overflow: hidden;
 
   .align-house {
     display: flex;
@@ -40,7 +43,7 @@ export const ContainerItems = styled.div`
       font-weight: 700;
     }
   }
- 
+
   .formikmessage {
     font-size: 10px;
     color: #b22222;

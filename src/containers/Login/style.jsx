@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 10px;
 `
 
@@ -19,8 +20,11 @@ export const PipocaLogo = styled.img`
 export const ContainerItems = styled.div`
   background-color: #fccc5c;
   width: 497px;
-  height: 800px;
+  height: 90%;
   border-radius: 5px;
+  padding-top: 40px;
+  overflow: hidden;
+
 
   .align-house {
     display: flex;
