@@ -40,7 +40,7 @@ function ResetPass() {
           email: values.email,
         })
 
-        if (response.status === 200) {
+        if (response.status === 200 || response.status === 201) {
           toast.success('A nova senha foi enviada para seu email!')
         } else {
           toast.error('Falha ao resetar senha. Tente novamente.')

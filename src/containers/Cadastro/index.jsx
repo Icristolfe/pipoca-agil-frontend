@@ -77,6 +77,10 @@ function Cadastro() {
           /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])/,
           'A senha deve conter um número, uma letra maiúscula e caractere especial',
         )
+        .notOneOf(
+          [Yup.ref('email'), Yup.ref('nome'), Yup.ref('sobrenome')],
+          'A senha não pode ser igual ao email, nome ou sobrenome',
+        )
         .required('Campo Senha é obrigatório'),
       confirmarSenha: Yup.string()
         .oneOf([Yup.ref('senha'), null], 'As senhas devem ser iguais')

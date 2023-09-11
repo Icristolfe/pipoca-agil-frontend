@@ -54,7 +54,7 @@ function Splash() {
       setTimeout(() => {
         setTimeLimitReached(true)
         setShowLogin(true)
-      }, 10000)
+      }, 5000)
     }
   }, [showLogin])
 
