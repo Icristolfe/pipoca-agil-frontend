@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -28,6 +28,15 @@ function Cadastro() {
   const [isCheckedAtt, setIsCheckedAtt] = useState(false)
   const [isCheckedPriv, setIsCheckedPriv] = useState(false)
   const [isButtonEnabled, setIsButtonEnabled] = useState(false)
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    async function Get() {
+      const { data } = await apiPipoca.get('/users')
+      setUsers(data)
+    }
+    Get()
+  }, [])
 
   const handleCheckboxChangeAtt = () => {
     setIsCheckedAtt(!isCheckedAtt)
@@ -70,18 +79,23 @@ function Cadastro() {
         ),
       email: Yup.string()
         .email('Email inválido')
-        .required('Campo Email é obrigatório'),
+        .required('Campo Email é obrigatório')
+        .test('unique-email', 'Este email já está em uso', function (value) {
+          // Verifica se o email já existe na lista de usuários
+          return !users.some((user) => user.email === value)
+        }),
       senha: Yup.string()
         .min(8, 'A senha deve ter no mínimo 8 caracteres')
         .matches(
-          /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])/,
-          'A senha deve conter um número, uma letra maiúscula e caractere especial',
+          /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-z])/,
+          'A senha deve conter pelo menos uma letra minúscula, uma letra maiúscula, um número e um caractere especial',
         )
         .notOneOf(
           [Yup.ref('email'), Yup.ref('nome'), Yup.ref('sobrenome')],
           'A senha não pode ser igual ao email, nome ou sobrenome',
         )
         .required('Campo Senha é obrigatório'),
+
       confirmarSenha: Yup.string()
         .oneOf([Yup.ref('senha'), null], 'As senhas devem ser iguais')
         .required('Campo Confirmar Senha é obrigatório'),
@@ -121,6 +135,7 @@ function Cadastro() {
             draggable: true,
             progress: undefined,
           })
+
           navigate('/login')
         })
         .catch(() => {

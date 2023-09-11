@@ -21,7 +21,7 @@ export const PipocaLogo = styled.img`
 export const ContainerItems = styled.div`
   background-color: #fccc5c;
   width: 497px;
-  height: 800px;
+  height: 95%;
   border-radius: 5px;
   overflow: hidden;
 
