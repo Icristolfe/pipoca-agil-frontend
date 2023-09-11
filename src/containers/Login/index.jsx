@@ -66,6 +66,7 @@ function Login() {
         localStorage.setItem('token', token)
         if (data.status === 201 || data.status === 200) {
           toast.success('Login bem-sucedido!')
+          navigate('/home')
         } else {
           toast.error('Falha ao fazer login. Verifique suas credenciais.')
         }

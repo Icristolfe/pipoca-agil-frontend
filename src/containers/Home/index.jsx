@@ -1,9 +1,11 @@
-
+import { Container } from './style'
+import { Header } from '../../components'
 function Home () {
   return (
-    <div>
+    <Container>
+      <Header />
       <h1>Home</h1>
-    </div>
+    </Container>
   )
 }
 
