@@ -79,11 +79,11 @@ function ResetPass() {
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              widthChange={true}
             />
 
             <Button
               label="Enviar"
-              isTrue={true}
               isButtonEnabled={isButtonEnabled}
               type="submit"
             />

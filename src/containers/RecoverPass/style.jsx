@@ -16,18 +16,30 @@ export const PipocaLogo = styled.img`
   width: 50px;
   height: 50px;
   margin-bottom: 30px;
+
+  @media (max-width: 480px) {
+    margin-bottom: 10px;
+  }
 `
 
 export const ContainerItems = styled.div`
   background-color: #fccc5c;
-  width: 497px;
+  width: 95%;
   height: 95%;
   border-radius: 5px;
   overflow: hidden;
 
+  @media (max-width: 480px) {
+    overflow: auto;
+  }
+
   .align-house {
     display: flex;
     padding: 15px 0 0 35px;
+
+    @media (max-width: 480px) {
+      padding: 5px 0 0 35px;
+    }
   }
 
   .text-align {
@@ -86,6 +98,11 @@ export const LinkAlign = styled.div`
   justify-content: end;
   padding-right: 48px;
   margin: 50px;
+
+  @media (max-width: 480px) {
+    margin: 10px;
+    align-items: center;
+  }
 `
 
 export const Label = styled.label`

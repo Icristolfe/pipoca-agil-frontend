@@ -16,18 +16,45 @@ export const PipocaLogo = styled.img`
   width: 50px;
   height: 50px;
   margin-bottom: 30px;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 
 export const ContainerItems = styled.div`
   background-color: #fccc5c;
   width: 497px;
-  height: 95%;
+  height: 90%;
   border-radius: 5px;
   overflow: hidden;
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 80%;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+  }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    height: 97%;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    overflow: auto;
+  }
 
   .align-house {
     display: flex;
     padding: 15px 0 0 35px;
+
+    @media (max-width: 480px) {
+      padding: 0 0 0 10px;
+    }
   }
 
   .text-align {
@@ -109,6 +136,10 @@ export const Label = styled.label`
   gap: 5px;
   margin-bottom: 5px;
   margin-left: 30px;
+
+  @media (max-width: 480px) {
+    margin-left: 15px;
+  }
 `
 
 export const CheckboxContainer = styled.div`

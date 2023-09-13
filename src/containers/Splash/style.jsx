@@ -7,8 +7,11 @@ export const Container = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  padding:0px 20px; /* Corrigindo o valor de padding */
+  position: fixed;
+  padding:0px 20px;
   background-color: #b13830;
+
+ 
 `;
 
 export const Popcorn = styled.img`
@@ -18,7 +21,7 @@ export const Popcorn = styled.img`
 `;
 
 export const CentralContainer = styled.div`
-  width: 80%; /* Definindo a largura da CentralContainer */
+  width: 50%; /* Definindo a largura da CentralContainer */
   max-width: 400px; /* Limitando a largura máxima */
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
@@ -28,9 +31,13 @@ export const CentralContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-25%, -25%);
 
-  @media (max-width: 768px) {
-    width: 90%; /* Ajustando a largura para telas menores */
+  @media (max-width: 480px) {
+    width: 80%; 
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 `;

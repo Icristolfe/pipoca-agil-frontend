@@ -16,6 +16,10 @@ export const StyledInput = styled.input`
   border-radius: 5px;
   width: ${(props) => (props.widthChange ? '90%' : '85%')};
 
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: ${(props) => (props.widthChange ? '60%' : '45%')};
+  }
+
   &::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(38%) sepia(13%) saturate(0%) hue-rotate(247deg)
