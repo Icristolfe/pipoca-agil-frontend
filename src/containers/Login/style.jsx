@@ -8,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  overflow: auto;
 `
 
 export const PipocaLogo = styled.img`
@@ -31,7 +31,7 @@ export const ContainerItems = styled.div`
   height: 95%;
   border-radius: 5px;
   padding-top: 40px;
-  overflow: hidden;
+  padding-bottom: 20px;
 
   @media (max-width: 480px) {
     width: 90%;
@@ -41,7 +41,7 @@ export const ContainerItems = styled.div`
     flex-direction: column;
     justify-content: center;
     padding-top: 20px;
-    overflow: auto;
+    overflow: visible;
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
@@ -50,7 +50,7 @@ export const ContainerItems = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: auto;
+    overflow: visible;
   }
 
   .align-house {
