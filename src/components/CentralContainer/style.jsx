@@ -49,7 +49,7 @@ export const StyledCentralContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.2);
     overflow: auto;
     margin-left: 18px;
