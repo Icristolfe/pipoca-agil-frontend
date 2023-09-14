@@ -25,12 +25,8 @@ export const StyledCentralContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgb(252, 204, 92);
-  background: radial-gradient(
-    circle,
-    rgba(252, 204, 92, 1) 0%,
-    rgba(177, 55, 49, 1) 100%
-  );
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.2);
   justify-content: center;
   animation: ${fadeIn} 1s forwards;
   border-radius: 10px;
@@ -44,7 +40,7 @@ export const StyledCentralContainer = styled.div`
     justify-content: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: none;
+    backdrop-filter: blur(10px);
   }
 
   @media (max-width: 480px) {
@@ -53,25 +49,15 @@ export const StyledCentralContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgb(252, 204, 92);
-    background: radial-gradient(
-      circle,
-      rgba(252, 204, 92, 1) 0%,
-      rgba(177, 55, 49, 1) 100%
-    );
-    backdrop-filter: none;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
     overflow: auto;
     margin-left: 18px;
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
-    background: rgb(252, 204, 92);
-    background: radial-gradient(
-      circle,
-      rgba(252, 204, 92, 1) 0%,
-      rgba(177, 55, 49, 1) 100%
-    );
-    backdrop-filter: none;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.2);
   }
 `
 
