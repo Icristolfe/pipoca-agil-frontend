@@ -115,6 +115,15 @@ export const Cadastre = styled.div`
   justify-content: center;
   margin: 30px 0;
   font-size: 14px;
+
+  @media (max-width: 480px) {
+    margin: 5px 0;
+    font-size: 12px;
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+    margin: 20px 0;
+    font-size: 14px;
+  }
   a {
     color: #117df9;
     font-weight: 900;
