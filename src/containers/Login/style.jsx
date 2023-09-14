@@ -50,7 +50,7 @@ export const ContainerItems = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: visible;
+    overflow: auto;
   }
 
   .align-house {
