@@ -24,7 +24,7 @@ export const ButtonContainer = styled.button`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
