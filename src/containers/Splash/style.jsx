@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
@@ -8,17 +8,15 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  padding:0px 20px;
+  padding: 0px 20px;
   background-color: #b13830;
-
- 
-`;
+`
 
 export const Popcorn = styled.img`
   width: 50px;
   height: 50px;
   position: absolute;
-`;
+`
 
 export const CentralContainer = styled.div`
   width: 50%; /* Definindo a largura da CentralContainer */
@@ -34,10 +32,10 @@ export const CentralContainer = styled.div`
   transform: translate(-25%, -25%);
 
   @media (max-width: 480px) {
-    width: 80%; 
-    font-size: 10px;
+    width: 90%;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-`;
+`

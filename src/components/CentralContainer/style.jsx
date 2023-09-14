@@ -19,20 +19,23 @@ const textAnimation = keyframes`
 `
 
 export const StyledCentralContainer = styled.div`
-  height: 60%;
-  width: 80%;
+  height: 80%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
+  background: rgb(252, 204, 92);
+  background: radial-gradient(
+    circle,
+    rgba(252, 204, 92, 1) 0%,
+    rgba(177, 55, 49, 1) 100%
+  );
   justify-content: center;
   animation: ${fadeIn} 1s forwards;
   border-radius: 10px;
   margin-top: 20px;
 
-  
   @media (min-width: 481px) and (max-width: 767px) {
     width: 80%;
     font-size: 12px;
@@ -40,6 +43,35 @@ export const StyledCentralContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: none;
+  }
+
+  @media (max-width: 480px) {
+    width: 90%;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgb(252, 204, 92);
+    background: radial-gradient(
+      circle,
+      rgba(252, 204, 92, 1) 0%,
+      rgba(177, 55, 49, 1) 100%
+    );
+    backdrop-filter: none;
+    overflow: auto;
+    margin-left: 18px;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    background: rgb(252, 204, 92);
+    background: radial-gradient(
+      circle,
+      rgba(252, 204, 92, 1) 0%,
+      rgba(177, 55, 49, 1) 100%
+    );
+    backdrop-filter: none;
   }
 `
 
@@ -50,9 +82,21 @@ export const TextAnimationContainer = styled.div`
   justify-content: start;
   width: 100%;
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 100%;
   animation: ${textAnimation} 1s forwards;
+
+  @media (max-width: 480px) {
+    top: 30%;
+    font-size: 18px;
+    left: 102%;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    top: 30%;
+    font-size: 18px;
+    left: 102%;
+  }
 `
 
 export const Text = styled.p`
@@ -76,6 +120,9 @@ export const Text = styled.p`
 `
 
 export const QuestionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
   text-align: center;
 `
@@ -96,7 +143,5 @@ export const ButtonContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 66px;
-
   }
 `
