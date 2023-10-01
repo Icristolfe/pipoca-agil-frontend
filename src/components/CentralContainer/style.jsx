@@ -40,7 +40,7 @@ export const StyledCentralContainer = styled.div`
     justify-content: center;
     align-items: center;
     background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
   }
 
   @media (max-width: 480px) {
@@ -56,7 +56,7 @@ export const StyledCentralContainer = styled.div`
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.2);
   }
 `
@@ -94,7 +94,8 @@ export const Text = styled.p`
 
   @media (max-width: 480px) {
     width: 90%;
-    font-size: 12px;
+    font-size: 16px;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;

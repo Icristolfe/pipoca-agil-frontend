@@ -16,6 +16,7 @@ export const ButtonContainer = styled.button`
   border-radius: 10px;
   cursor: pointer;
   font-size: 24px;
+  margin-bottom: 30px;
 
   @media (max-width: 480px) {
     width: ${(props) => (props.isTrue ? '55%' : '150px')};

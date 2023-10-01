@@ -1,12 +1,17 @@
-import { Container } from './style'
+import { Container, HeaderLink, ImageLogo, LinkContainer } from './style'
+
+import Logo from '../../assets/logologin.svg'
 function Header() {
   return (
     <Container>
-      <h1>inicio</h1>
-      <h1>Sobre</h1>
-      <h1>Podcast</h1>
-      <h1>Projetos</h1>
-      <h1>Contato</h1>
+      <LinkContainer>
+        <HeaderLink>INICIO</HeaderLink>
+        <HeaderLink>SOBRE</HeaderLink>
+        <HeaderLink>PODCAST</HeaderLink>
+        <HeaderLink>PROJETOS</HeaderLink>
+        <HeaderLink>CONTATO</HeaderLink>
+      </LinkContainer>
+      <ImageLogo src={Logo} alt="Logo" />
     </Container>
   )
 }

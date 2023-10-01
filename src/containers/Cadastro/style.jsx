@@ -8,7 +8,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
   overflow: hidden;
 `
 
@@ -27,7 +26,6 @@ export const ContainerItems = styled.div`
   width: 497px;
   height: 90%;
   border-radius: 5px;
-  overflow: hidden;
 
   @media (min-width: 481px) and (max-width: 767px) {
     width: 80%;
@@ -40,8 +38,6 @@ export const ContainerItems = styled.div`
 
   @media (max-width: 480px) {
     width: 90%;
-    height: 97%;
-    font-size: 10px;
     display: flex;
     flex-direction: column;
     padding-top: 20px;
@@ -89,6 +85,14 @@ export const InputContainer = styled.div`
   .nameinputs {
     display: flex;
     justify-content: center;
+
+    label {
+      margin-left: 55px;
+      @media (max-width: 480px) {
+        margin-left: 25px;
+      }
+
+    }
   }
 
   p {
@@ -144,10 +148,14 @@ export const Label = styled.label`
   flex-direction: column;
   gap: 5px;
   margin-bottom: 5px;
-  margin-left: 30px;
+  margin-left: 20px;
 
   @media (max-width: 480px) {
-    margin-left: 15px;
+    margin-left: 8%;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    margin-left: 22%;
   }
 `
 

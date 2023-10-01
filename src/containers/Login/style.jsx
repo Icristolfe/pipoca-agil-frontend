@@ -95,7 +95,7 @@ export const ContainerItems = styled.div`
 `
 
 export const SocialContainer = styled.div`
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;

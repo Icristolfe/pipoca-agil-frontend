@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { useFormik } from 'formik' // Import useFormik
-import * as Yup from 'yup' // Import Yup for validation schema
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import { useState } from 'react'
+import axios from 'axios'
+import gerarSenha from '../../Utils/gerarSenha'
 
-// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
-// import { useLinkedIn } from 'react-linkedin-login-oauth2'
-// import { useGoogleLogin } from '@react-oauth/google'
+import { useGoogleLogin } from '@react-oauth/google'
 import { toast } from 'react-toastify'
 import apiPipoca from '../../services/api'
 
@@ -14,32 +14,40 @@ import {
   PipocaLogo,
   ContainerItems,
   Label,
-  // Social,
-  // LinkButton,
-  // SocialContainer,
+  Social,
+  LinkButton,
+  SocialContainer,
   InputContainer,
   ForgetPassword,
   LinkAlign,
   Cadastre,
 } from './style'
 
-import { Input, Button } from '../../components'
+import { Input, Button, Divider } from '../../components'
 
 import House from '../../assets/house.svg'
 import Logo from '../../assets/logologin.svg'
-// import Facebook from '../../assets/facebook.svg'
-// import Linkedin from '../../assets/linkedin.svg'
-// import Google from '../../assets/google.svg'
+import Google from '../../assets/google.svg'
 
 function Login() {
   const navigate = useNavigate()
   const [isButtonEnabled] = useState(true)
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [facebookUser, setFacebookUser] = useState(null)
-  // const [googleUser, setGoogleUser] = useState(null)
-  // const [linkedInUser, setLinkedInUser] = useState(null)
-
+  const [autoSenha] = useState(gerarSenha)
+  const [googleUser, setGoogleUser] = useState({
+    nome: '',
+    sobrenome: '',
+    datanascimento: '',
+    email: '',
+    senha: '',
+    confirmarSenha: '',
+    isCheckedAtt: true,
+    isCheckedPriv: true,
+  })
+  const currentDate = new Date()
+  const formattedDate = `${currentDate.getFullYear()}-${String(
+    currentDate.getMonth() + 1,
+  ).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`
+  console.log(formattedDate)
   const validationSchema = Yup.object({
     email: Yup.string()
       .email('Email inválido')
@@ -78,63 +86,38 @@ function Login() {
     },
   })
 
-  // const login = useGoogleLogin({
-  //   onSuccess: async (tokenResponse) => {
-  //     try {
-  //       // Faça uma solicitação usando o Axios para obter informações do usuário
-  //       const response = await axios.get(
-  //         'https://www.googleapis.com/oauth2/v2/userinfo',
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${tokenResponse.access_token}`,
-  //           },
-  //         },
-  //       )
+  const login = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const response = await axios.get(
+          'https://www.googleapis.com/oauth2/v1/userinfo',
+          {
+            headers: {
+              Authorization: `Bearer ${tokenResponse.access_token}`,
+            },
+          },
+        )
+        console.log(tokenResponse.access_token)
+        setGoogleUser({
+          nome: response.data.given_name,
+          sobrenome: response.data.family_name,
+          datanascimento: formattedDate, // Define a data de nascimento
+          email: response.data.email,
+          senha: autoSenha, // Use a senha gerada automaticamente
+          confirmarSenha: autoSenha, // Use a mesma senha para a confirmação
+        })
+        console.log(response.data)
 
-  //       setGoogleUser(response.data)
-  //       console.log(response.data) // Isso imprimirá as informações do usuário
-  //     } catch (error) {
-  //       console.error('Erro ao obter informações do usuário do Google:', error)
-  //     }
-  //   },
-  // })
+        // Enviar as informações para o backend
+        await apiPipoca.post('/user', { googleUser })
 
-  // const { linkedInLogin } = useLinkedIn({
-  //   clientId: '777hvkggucrf9f',
-  //   redirectUri: `${window.location.origin}/linkedin`,
-  //   onSuccess: (code) => {
-  //     // O usuário está conectado com o LinkedIn
-  //     // Aqui você pode fazer uma chamada à API do LinkedIn para obter informações do usuário
-  //     fetch('https://api.linkedin.com/v2/me', {
-  //       headers: {
-  //         Authorization: `Bearer ${code}`,
-  //       },
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         setLinkedInUser(data)
-  //         console.log(data) // Isso imprimirá as informações do usuário
-  //       })
-  //       .catch((error) => {
-  //         console.error(
-  //           'Erro ao obter informações do usuário do LinkedIn:',
-  //           error,
-  //         )
-  //       })
-  //   },
-  //   onError: (error) => {
-  //     console.log('Erro no login do LinkedIn', error)
-  //   },
-  // })
-  // const responseFacebook = (response) => {
-  //   if (response.status === 'connected') {
-  //     // O usuário está conectado com o Facebook
-  //     setFacebookUser(response)
-  //     console.log(response) // Isso imprimirá as informações do usuário
-  //   } else {
-  //     console.log('Falha no login do Facebook')
-  //   }
-  // }
+        // Após a resposta do backend, você pode lidar com o redirecionamento ou outras ações necessárias.
+        // Por exemplo, você pode redirecionar o usuário para a página de perfil.
+      } catch (error) {
+        console.error('Erro ao obter informações do usuário do Google:', error)
+      }
+    },
+  })
 
   return (
     <Container>
@@ -148,29 +131,13 @@ function Login() {
           <h1>Faça seu Login</h1>
           <p>Use o seu melhor e-mail!</p>
         </div>
-        {/* <SocialContainer>
-          <LinkButton onClick={linkedInLogin}>
-            <Social src={Linkedin} alt="social" true={true} />
-          </LinkButton>
-
-          <FacebookLogin
-            appId="681215020114770"
-            autoLoad={false}
-            fields="name,email,picture"
-            callback={responseFacebook}
-            render={(renderProps) => (
-              <LinkButton onClick={renderProps.onClick}>
-                <Social src={Facebook} alt="social" />
-              </LinkButton>
-            )}
-          />
-
+        <SocialContainer>
           <LinkButton onClick={() => login()}>
             <Social src={Google} alt="social" />
           </LinkButton>
-        </SocialContainer> */}
+        </SocialContainer>
 
-        {/* <Divider /> */}
+        <Divider />
 
         <InputContainer>
           <form onSubmit={formik.handleSubmit}>
