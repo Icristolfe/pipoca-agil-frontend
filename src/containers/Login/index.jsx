@@ -180,7 +180,7 @@ function Login() {
             </LinkAlign>
             <Button
               label="Login"
-              isTrue={true}
+              isTrue={'true'}
               isButtonEnabled={isButtonEnabled}
               type="submit"
             />

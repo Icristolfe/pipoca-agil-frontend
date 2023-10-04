@@ -190,7 +190,7 @@ function Cadastro() {
           ) : null}
           <Input
             type="date"
-            widthChange={true}
+            widthChange={'true'}
             onBlur={(e) => {
               const selectedDate = e.target.value
               const dateObj = new Date(selectedDate)
@@ -216,7 +216,7 @@ function Cadastro() {
           ) : null}
           <Input
             type="text"
-            widthChange={true}
+            widthChange={'true'}
             {...formik.getFieldProps('email')}
           />
 
@@ -226,7 +226,7 @@ function Cadastro() {
           ) : null}
           <Input
             type="password"
-            widthChange={true}
+            widthChange={'true'}
             {...formik.getFieldProps('senha')}
           />
 
@@ -238,7 +238,7 @@ function Cadastro() {
           ) : null}
           <Input
             type="password"
-            widthChange={true}
+            widthChange={'true'}
             {...formik.getFieldProps('confirmarSenha')}
           />
 

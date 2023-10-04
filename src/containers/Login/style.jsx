@@ -17,21 +17,22 @@ export const PipocaLogo = styled.img`
   margin-bottom: 30px;
 
   @media (max-width: 480px) {
-    margin: 0 0 10px 0;
+    display: none;
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
-    margin-bottom: 10px;
+    display: none;
   }
 `
 
 export const ContainerItems = styled.div`
   background-color: #fccc5c;
   width: 497px;
-  height: 95%;
+  height: 90%;
   border-radius: 5px;
   padding-top: 40px;
   padding-bottom: 20px;
+  position: absolute;
 
   @media (max-width: 480px) {
     width: 90%;
@@ -41,7 +42,7 @@ export const ContainerItems = styled.div`
     flex-direction: column;
     justify-content: center;
     padding-top: 20px;
-    overflow: visible;
+    overflow: auto;
   }
 
   @media (min-width: 481px) and (max-width: 767px) {
@@ -58,7 +59,7 @@ export const ContainerItems = styled.div`
     padding: 15px 0 0 35px;
 
     @media (max-width: 480px) {
-      padding: 0 0 0 10px;
+      padding: 20px 0 0 15px;
     }
 
     @media (min-width: 481px) and (max-width: 767px) {
@@ -76,7 +77,7 @@ export const ContainerItems = styled.div`
     margin-bottom: 30px;
 
     @media (max-width: 480px) {
-      margin-bottom: 0;
+      margin: 20px 0;
     }
 
     @media (min-width: 481px) and (max-width: 767px) {
@@ -203,10 +204,10 @@ export const Label = styled.label`
   margin: 20px 0 5px 45px;
 
   @media (min-width: 481px) and (max-width: 767px) {
-    margin: 5px 0px 5px 175px;
+    margin: 5px 0px 5px 125px;
   }
 
   @media (max-width: 480px) {
-    margin: 5px 0 5px 25px;
+    margin: 5px 0 5px 35px;
   }
 `
