@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token')
 
-  if (!token) {
+  if (token) {
     return <Navigate replace to="/login" />
   }
   // if (isAdmin && !JSON.parse(token).admin) {

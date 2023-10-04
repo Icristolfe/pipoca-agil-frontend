@@ -112,10 +112,10 @@ export const HeaderButton = styled.button`
 export const ContainerResp = styled.div`
   display: none;
   margin-left: 5px;
-  display: ${(props) => (props.isOpen ? 'none' : 'flex')};
 
   @media (max-width: 480px) {
     display: inline-block;
+    display: ${(props) => (props.isOpen ? 'none' : 'block')};
   }
 `
 export const BackContainer = styled.div`
